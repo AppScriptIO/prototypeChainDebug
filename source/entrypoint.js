@@ -1,5 +1,3 @@
-import consoleLogStyleConfig from "../../configuration/consoleLogStyleConfig";
-
 /**
  * Adds prototype information on static classes, prototypes, and instances.
  * Returns a proxy with traps to add meta information.
