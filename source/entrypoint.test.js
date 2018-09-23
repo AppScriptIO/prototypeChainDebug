@@ -1,4 +1,5 @@
 import assert from 'assert'
+import { assert as assertChai } from 'chai'
 import prototypeDebug from './entrypoint.js'
 
 
@@ -25,12 +26,13 @@ describe('Prototype Chain Debugger', () => {
         })
 
         it('Instance should have a meta property', () => {
-            assert(instance.hasOwnProperty('meta'))
+            assertChai.isOk(instance.meta)
         })
     })
 
     describe('Extended class correctly displays contsructor in meta information when only the class is wrapped with proxy', () => {
         class Superclass {}
+        
         class Class extends Superclass { constructor() { super() } }
         Class = prototypeDebug(Class)
         class Subclass extends Class { constructor() { super() }}
@@ -59,28 +61,7 @@ describe('Prototype Chain Debugger', () => {
             assert.equal(directInstance.meta.Class, 'Class')
         })
         it('subclassInstance should have meta property', () => {
-            assert(subclassInstance.hasOwnProperty('meta'))
-        })
-        it('subclassInstance own meta should contain correct contructor info ', () => {
-            assert.equal(Subclass.meta.Class, 'Subclass')
-        })
-    })
-
-    describe('Extended class should correctly display metadata when all are wrapped with proxies.', () => {
-        class Superclass {}
-        Superclass = prototypeDebug(Superclass)        
-        class Class extends Superclass { constructor() { super() } }
-        Class = prototypeDebug(Class)
-        class Subclass extends Class { constructor() { super() }}
-        Subclass = prototypeDebug(Subclass)
-        let directInstance = new Class()
-        let subclassInstance = new Subclass()
-
-        it('directInstance should contain correct meta data of constructing class', () => {
-            assert.equal(directInstance.meta.Class, 'Class')
-        })
-        it('subclassInstance should have meta property', () => {
-            assert(subclassInstance.hasOwnProperty('meta'))
+            assertChai.isOk(subclassInstance.meta)
         })
         it('subclassInstance own meta should contain correct contructor info ', () => {
             assert.equal(Subclass.meta.Class, 'Subclass')
