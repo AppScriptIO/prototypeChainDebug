@@ -1,1 +1,1 @@
-prototypeChainDebug
+./documentation/information.md
