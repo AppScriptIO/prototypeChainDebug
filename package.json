@@ -2,6 +2,9 @@
     "name": "@dependency/prototypeChainDebug",
     "version": "1.0.1",
     "main": "./entrypoint/programmaticAPI",
+    "scripts": {
+        "buildAndRelease": "yarn run scriptManager shouldCompileScript=true JSProject/buildAndRelease \".moduleProject({})\""
+    },
     "devDependencies": {
         "@dependency/scriptManager": "https://github.com/AppScriptIO/scriptManager#semver:^1.x.x",
         "@dependency/deploymentScript": "https://github.com/AppScriptIO/deploymentScript#semver:^1.x.x",
